@@ -39,6 +39,18 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 app.get('/', function(req, res){
-     res.send("alibababababba");
-});
+    res.render('index', { title: 'Hey', message: 'dragonbound dragonbound!' })
+ });
+const mongoAtlasUri = "mongodb+srv://gh:<mnbvcxzasd>@cluster0.szoaq.mongodb.net/?retryWrites=true&w=majority";
+
+try {
+    // Connect to the MongoDB cluster
+    mongoose.connect(
+        mongoAtlasUri,
+        { useNewUrlParser: true, useUnifiedTopology: true },
+        () => console.log(" Mongoose blog mindx is connected")
+    );
+} catch (e) {
+    console.log("could not connect");
+}
 module.exports = app;
